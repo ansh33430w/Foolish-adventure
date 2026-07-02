@@ -184,7 +184,7 @@ func animationmechine()-> void:
 			
 			states.run :   animated_sprite_2d.play("run")
 			states.jump : animated_sprite_2d.play("jump")
-			states.fall :animated_sprite_2d.play("Idle")
+			states.fall :animated_sprite_2d.play("fall")
 			
 	
 
