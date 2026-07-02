@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2jpe4ub21w5d"]
 
 [ext_resource type="Texture2D" uid="uid://b86orolahaxoh" path="res://Assets/characters/Fighter/Idle.png" id="1_lj8jo"]
-[ext_resource type="Script" uid="uid://didfkw8x1vw4h" path="res://scene/character_body_2d.gd" id="1_yi2kj"]
+[ext_resource type="Script" uid="uid://didfkw8x1vw4h" path="res://scripts/character_body_2d.gd" id="1_yi2kj"]
 [ext_resource type="Texture2D" uid="uid://cp72gpgi5kl4g" path="res://Assets/characters/Fighter/Attack_1.png" id="2_t53lx"]
 [ext_resource type="Texture2D" uid="uid://cdkpl8rshpdor" path="res://Assets/characters/Fighter/Dead.png" id="3_yi2kj"]
 [ext_resource type="Texture2D" uid="uid://dt6ifmye4lcdh" path="res://Assets/characters/Fighter/Hurt.png" id="4_cibgq"]
