@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dfnlp1h0yag4e" path="res://Assets/map/1 Tiles/Tile_08.png" id="23_g8d66"]
 [ext_resource type="Texture2D" uid="uid://ch22mv8l8l77h" path="res://Assets/map/1 Tiles/Tile_09.png" id="24_ssogm"]
 [ext_resource type="PackedScene" uid="uid://b2jpe4ub21w5d" path="res://scenes/character_body_2d.tscn" id="25_nu15b"]
+[ext_resource type="PackedScene" uid="uid://q7vehrn33xvo" path="res://goblin.tscn" id="26_67ygf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yhhj7"]
 texture = ExtResource("1_3flog")
@@ -235,3 +236,6 @@ tile_set = SubResource("TileSet_j8ni3")
 position = Vector2(29, -54)
 
 [node name="Camera2D" type="Camera2D" parent="TileMapLayer/CharacterBody2D" unique_id=1403620891]
+
+[node name="CharacterBody2D" parent="." unique_id=1543657212 instance=ExtResource("26_67ygf")]
+position = Vector2(174, 24)

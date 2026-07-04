@@ -25,7 +25,7 @@ var inaction = false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var animlock = 0.45
-var maxcombotime = 0.6
+var maxcombotime = 1
 var combotime = 0
 enum states {idle,walk,run,atk1,atk2,atk3,huet,death ,fall , jump 
 }

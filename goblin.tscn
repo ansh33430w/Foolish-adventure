@@ -239,19 +239,21 @@ a = Vector2(-101, -25)
 b = Vector2(262, -27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s2j4"]
-size = Vector2(27, 36)
+size = Vector2(27, 49)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1543657212]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1543657212 groups=["mosnters"]]
 script = ExtResource("1_utad2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=250963152]
-position = Vector2(73, -27)
+position = Vector2(73, -36)
+scale = Vector2(1, 1.1266667)
 sprite_frames = SubResource("SpriteFrames_3r1id")
 animation = &"idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1027102069]
-visible = false
-polygon = PackedVector2Array(59, 0, 64, 0, 71, -8, 74, -10, 78, -9, 79, -6, 78, -5, 76, -3, 78, -1, 82, -1, 82, -3, 82, -6, 86, -8, 85, -12, 81, -15, 89, -13, 87, -18, 82, -21, 85, -31, 83, -33, 80, -30, 77, -32, 75, -34, 74, -31, 65, -36, 69, -28, 64, -24, 59, -21, 55, -19, 59, -13, 62, -7, 58, -2)
+position = Vector2(3.8146973e-06, -2.6624985)
+scale = Vector2(0.99999994, 1.2465279)
+polygon = PackedVector2Array(59, 0, 64, 0, 71, -8, 74, -10, 78, -9, 79, -6, 78, -5, 76, -3, 78, -1, 82, -1, 82, -3, 82, -6, 86, -8, 85, -12, 81, -15, 89, -13, 87, -18, 82, -21, 85, -31, 83, -33, 80, -30, 77, -32, 76, -34, 74, -31, 65, -36, 69, -28, 64, -24, 59, -21, 55, -19, 59, -13, 62, -7, 58, -2)
 
 [node name="hitbpx" type="Area2D" parent="." unique_id=1086386640]
 visible = false
@@ -270,5 +272,16 @@ shape = SubResource("SegmentShape2D_utad2")
 [node name="hurtbox" type="Area2D" parent="." unique_id=1789791247]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=105377620]
-position = Vector2(72.5, -18)
+visible = false
+position = Vector2(72.5, -24.5)
 shape = SubResource("RectangleShape2D_3s2j4")
+
+[node name="raycastes" type="Node" parent="." unique_id=1143870100]
+
+[node name="checkwall" type="RayCast2D" parent="raycastes" unique_id=844973444]
+position = Vector2(75, -17)
+target_position = Vector2(280, 0)
+
+[node name="checkledge" type="RayCast2D" parent="raycastes" unique_id=2118251763]
+position = Vector2(75, -10)
+target_position = Vector2(280, 0)
