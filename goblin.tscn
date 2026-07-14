@@ -235,7 +235,7 @@ animations = [{
 size = Vector2(18.18045, 27.649023)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyhpr"]
-size = Vector2(37, 49)
+size = Vector2(114, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utad2"]
 size = Vector2(505.5, 33)
@@ -260,14 +260,27 @@ position = Vector2(2, 3)
 scale = Vector2(0.9779414, 1.2465279)
 shape = SubResource("RectangleShape2D_6nebt")
 
-[node name="hitbpx" type="Area2D" parent="." unique_id=1086386640]
+[node name="Node2D" type="Node2D" parent="." unique_id=381364948]
+
+[node name="hitbpx" type="Area2D" parent="Node2D" unique_id=1086386640]
 position = Vector2(61, -16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbpx" unique_id=1388107858]
-position = Vector2(-28.5, 18.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/hitbpx" unique_id=1388107858]
+position = Vector2(-61, 15)
 shape = SubResource("RectangleShape2D_eyhpr")
 
+[node name="raycastes" type="Node" parent="Node2D" unique_id=1143870100]
+
+[node name="checkwall" type="RayCast2D" parent="Node2D/raycastes" unique_id=844973444]
+position = Vector2(2, -1)
+target_position = Vector2(51, 1)
+
+[node name="checkledge" type="RayCast2D" parent="Node2D/raycastes" unique_id=2118251763]
+position = Vector2(-1, 19)
+target_position = Vector2(53, 1)
+
 [node name="Detect" type="Area2D" parent="." unique_id=1520236080]
+visible = false
 light_mask = 31
 visibility_layer = 31
 
@@ -280,13 +293,3 @@ shape = SubResource("RectangleShape2D_utad2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=105377620]
 position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_3s2j4")
-
-[node name="raycastes" type="Node" parent="." unique_id=1143870100]
-
-[node name="checkwall" type="RayCast2D" parent="raycastes" unique_id=844973444]
-position = Vector2(2, -1)
-target_position = Vector2(51, 1)
-
-[node name="checkledge" type="RayCast2D" parent="raycastes" unique_id=2118251763]
-position = Vector2(-1, 19)
-target_position = Vector2(53, 1)

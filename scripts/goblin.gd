@@ -24,8 +24,8 @@ var patroldir = 1
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-@onready var hitbpx: Area2D = $hitbpx
-@onready var collision_shape_2d: CollisionShape2D = $hitbpx/CollisionShape2D
+@onready var hitbpx: Area2D = $Node2D/hitbpx
+@onready var collision_shape_2d: CollisionShape2D = $Node2D/hitbpx/CollisionShape2D
 
 
 @onready var hurtbox: Area2D = $hurtbox
@@ -34,9 +34,10 @@ var patroldir = 1
 
 @onready var detect: Area2D = $Detect
 
-@onready var checkwall: RayCast2D = $raycastes/checkwall
-@onready var checkledge: RayCast2D = $raycastes/checkledge
+@onready var checkwall: RayCast2D = $Node2D/raycastes/checkwall
+@onready var checkledge: RayCast2D = $Node2D/raycastes/checkledge
 
+@onready var node_2d: Node2D = $Node2D
 
 
 
@@ -54,7 +55,8 @@ var target : Node2D = null
 func _ready() -> void:
 	collision_shape_2d.disabled = true
 	
-	hitbpx.area_entered.connect(_on_hitbpx_area_enterd)
+	
+	hitbpx.body_entered.connect(_on_hitbpx_body_enterd)
 	hurtbox.area_entered.connect(_on_hurtbox_area_entered)
 	
 	detect.body_entered.connect(_on_detect_body_entered)
@@ -170,7 +172,6 @@ func attack():
 	
 	
 	
-	
 func _on_detect_body_entered(body:Node2D):
 	
 	if body.is_in_group("player"):
@@ -189,11 +190,11 @@ func _on_detect_body_exited(body : Node2D):
 		
 		
 		
-func _on_hitbpx_area_enterd(area:Area2D):
-	var atktarget = area.get_parent()
-	if atktarget and atktarget.is_in_group("player") :
-		atktarget.Damage(atkdmg)
-		
+func _on_hitbpx_body_enterd(body :Node2D):
+	print(body)
+	if body.is_in_group("player"):
+		print("o")
+		body.Damage(atkdmg)
 		
 		
 		

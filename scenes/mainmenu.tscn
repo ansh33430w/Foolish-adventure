@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://lovgvko720sa"]
+
+[ext_resource type="Script" uid="uid://dnwev82m3xuf3" path="res://scripts/mainmenu.gd" id="1_5mbse"]
+[ext_resource type="Texture2D" uid="uid://cgxq1eu1gq6f1" path="res://Assets/map/2 Background/Overlay_illumination.png" id="2_natt5"]
+
+[node name="MAINMENU" type="Control" unique_id=799964357]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5mbse")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1949454714]
+layout_mode = 0
+offset_right = 1149.0
+offset_bottom = 646.0
+color = Color(0.59607846, 1, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=462297641]
+layout_mode = 0
+offset_right = 1800.0
+offset_bottom = 1200.0
+texture = ExtResource("2_natt5")
+
+[node name="Button" type="Button" parent="." unique_id=932502515]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 260.0
+offset_right = 672.0
+offset_bottom = 291.0
+text = "START"
+
+[node name="Button2" type="Button" parent="." unique_id=413726690]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 363.0
+offset_right = 675.0
+offset_bottom = 394.0
+text = "OPTONS"
+
+[node name="Label" type="Label" parent="." unique_id=1599109867]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 137.0
+offset_right = 859.0
+offset_bottom = 201.0
+theme_override_colors/font_color = Color(0.11, 0.11, 0.11, 1)
+theme_override_font_sizes/font_size = 32
+text = "WELCOME TO MY FIRST ADVENTURE"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

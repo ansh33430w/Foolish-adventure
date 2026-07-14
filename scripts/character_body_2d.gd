@@ -211,6 +211,7 @@ func animation_finished() -> void:
 		
 		
 func Damage(amt) -> void:
+	print("yeah")
 	if isdead:
 		return
 	health -= amt
