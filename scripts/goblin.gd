@@ -6,7 +6,7 @@ const JUMP_VELOCITY = -400.0
 var gravity = 1200
 var fallcap = 700
 
-const maxhealth = 50
+const maxhealth = 52
 
 var health = maxhealth
 
@@ -87,38 +87,41 @@ func tickatkcdn(delta) -> void:
 		atkcdn -= delta
 
 
+@warning_ignore("unused_parameter")
 func movement(delta) -> void:
 	if state == states.hurt or state ==states.death:
 		velocity.x = 0.0
 		
 	if target == null :
-		#search(delta)
+		search(delta)
 		return
 	var distance = global_position.distance_to(target.global_position)
 	if state == states.atk:
 		velocity.x = 0
 		return
 	if distance <= 40 and atkcdn<= 0.0:
-		#attack()
+		attack()
 		pass
 	elif distance<= 200.0:
-		#hunt(delta)
+		hunt(delta)
 		pass
 	else:
 		target = null
-		#search(delta)
+		search(delta)
 		
+
 func search(delta) ->void:
 	state =states.search
 	
 	if (checkwall and checkwall.is_colliding()) or (checkledge and  not checkledge.is_colliding()):
-		searchspd *= 1 
+		searchspd *= -1 
 	velocity.x = searchdir*searchspd
 	animated_sprite_2d.flip_h = searchdir < 0
 	
 	
 
 
+@warning_ignore("unused_parameter")
 func hunt(delta) -> void:
 	state = states.hunt
 	var dir = sign(target.global_position.x- global_position.x)
@@ -129,10 +132,10 @@ func hunt(delta) -> void:
 func attack()-> void:
 	state = states.atk
 	inaction = true
-	velocity.x = 0
+	velocity.x = 21
 	animated_sprite_2d.play("atk")
 	
-	#fliping hitboxxx  :(
+	#fliping hitboxxx  
 	
 	hitbox.scale.x = -1  if animated_sprite_2d.flip_h else 1
 	collision_shape_2d.disabled = false
@@ -149,7 +152,8 @@ func _on_detect_body_entered(body:Node2D) ->void:
 		
 func on_detect_body_exited(body:Node2D) -> void:
 	if body == target :
-		target == null
+		
+		target = null
 		
 	
 func _on_hitbox_entered(area:Area2D) -> void:
@@ -169,9 +173,9 @@ func animationmechine() -> void:
 			if abs(velocity.x) >0.1 :
 				if not animated_sprite_2d.is_playing() or animated_sprite_2d.animation != "run":
 					animated_sprite_2d.play("run")
-				else :
-					if not animated_sprite_2d.is_playing() or animated_sprite_2d.animation!= "idle" :
-						animated_sprite_2d.play("idle")
+			else :
+				if not animated_sprite_2d.is_playing() or animated_sprite_2d.animation!= "idle" :
+					animated_sprite_2d.play("idle")
 						
 						
 						
