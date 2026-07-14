@@ -30,7 +30,7 @@ var combotime = 0
 enum states {idle,walk,run,atk1,atk2,atk3,huet,death ,fall , jump 
 }
 var state:states = states.idle
-
+var hitbox_token = 0
 
 func _ready() -> void:
 	collision_shape_2d.disabled = true
@@ -68,7 +68,7 @@ func Gravity(delta:float) -> void :
 		
 		
 func controlls()-> void :
-	if state == states.huet or state == states.death:
+	if state == states.huet or state == states.death or inaction:
 		return
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jumppower
@@ -83,7 +83,7 @@ func controlls()-> void :
 func checkatk() -> void:
 	if atkcombo == 0:
 		attack(1)
-	else:
+	elif atkcombo < 3:
 		atking = true
 
 
@@ -106,10 +106,13 @@ func attack(step:int) ->void:
 func initialize_hitbox(step:int) -> void:
 	hitbox.scale.x = -1 if animated_sprite_2d.flip_h else 1 
 	collision_shape_2d.disabled = false
+	
+	hitbox_token = +1
+	var my_token = hitbox_token
 	var activetime = [0.15,0.15,0.2][step - 1 ]
 	await get_tree().create_timer(activetime).timeout
-	collision_shape_2d.disabled=true
-	
+	if my_token == hitbox_token :
+		collision_shape_2d.disabled=true
 	
 	
 func _on_area_hitbox_entered(area:Area2D) -> void:
@@ -137,7 +140,7 @@ func atksafecheck(delta) -> void:
 	if atkcombo ==0:
 		return
 	atk_safety_timer -= delta
-	if atk_safety_timer<= 0.0:
+	if atk_safety_timer<= 0.0 and state != states.atk1 and state != states.atk2 and state != states.atk3:
 		inaction = false
 		combotime = maxcombotime
 		atkcombo = 0 
@@ -196,16 +199,14 @@ func animation_finished() -> void:
 		else:
 			inaction = false
 			combotime = maxcombotime
-			if not atking:
-				atkcombo = 0 
-			state=states.idle
+			atking = false
+			atkcombo = 0
+			state = states.idle
 	elif animation == "hurt":
 		inaction = false
-		state = states.idle
+		state=states.idle
 	elif animation == "death":
 		queue_free()
-		
-		
 		
 		
 		

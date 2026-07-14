@@ -91,7 +91,7 @@ func tickatkcdn(delta) -> void:
 func movement(delta) -> void:
 	if state == states.hurt or state ==states.death:
 		velocity.x = 0.0
-		
+		return
 	if target == null :
 		search(delta)
 		return
@@ -101,10 +101,10 @@ func movement(delta) -> void:
 		return
 	if distance <= 40 and atkcdn<= 0.0:
 		attack()
-		pass
+		
 	elif distance<= 200.0:
 		hunt(delta)
-		pass
+		
 	else:
 		target = null
 		search(delta)
@@ -115,10 +115,13 @@ func search(delta) ->void:
 	
 	if (checkwall and checkwall.is_colliding()) or (checkledge and  not checkledge.is_colliding()):
 		searchspd *= -1 
-	velocity.x = searchdir*searchspd
-	animated_sprite_2d.flip_h = searchdir < 0
-	
-	
+		velocity.x = searchdir*searchspd
+		animated_sprite_2d.flip_h = searchdir < 0
+		return
+	velocity.x = searchdir * searchspd
+	animated_sprite_2d.flip_h = searchdir < 0 
+
+
 
 
 @warning_ignore("unused_parameter")
