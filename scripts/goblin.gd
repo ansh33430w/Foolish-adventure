@@ -23,9 +23,11 @@ var inaction = false
 var patroldir = 1
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @onready var hitbpx: Area2D = $Node2D/hitbpx
 @onready var collision_shape_2d: CollisionShape2D = $Node2D/hitbpx/CollisionShape2D
+@onready var audio_stream_player_2: AudioStreamPlayer = $AudioStreamPlayer2
 
 
 @onready var hurtbox: Area2D = $hurtbox
@@ -152,7 +154,7 @@ func chase():
 	
 	
 func attack():
-	
+	audio_stream_player.play()
 	state = states.atk
 	inaction = true
 	velocity.x = 0.0 
@@ -223,6 +225,7 @@ func damage(dmg):
 		
 func die():
 	isdead =true
+	audio_stream_player_2.play()
 	state =states.death
 	inaction = true
 	velocity = Vector2.ZERO

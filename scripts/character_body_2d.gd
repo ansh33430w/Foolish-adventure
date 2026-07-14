@@ -21,7 +21,9 @@ var atktimer = 0
 var inaction = false
 @onready var hitbox: Area2D = $hitbox
 @onready var collision_shape_2d: CollisionShape2D = $hitbox/CollisionShape2D
+@onready var audio_stream_player_2: AudioStreamPlayer = $AudioStreamPlayer2
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var animlock = 0.45
@@ -33,6 +35,7 @@ var state:states = states.idle
 var hitbox_token = 0
 
 func _ready() -> void:
+	set_physics_process(true)
 	collision_shape_2d.disabled = true
 	hitbox.area_entered.connect(_on_area_hitbox_entered)
 	animated_sprite_2d.animation_finished.connect(animation_finished)
@@ -90,6 +93,8 @@ func checkatk() -> void:
 
 
 func attack(step:int) ->void:
+	
+	audio_stream_player.play()
 	atkcombo = step
 	atking = false
 	inaction = true
@@ -230,11 +235,13 @@ func Damage(amt) -> void:
 # now i really wana die :(
 
 func die() -> void:
+	audio_stream_player_2.play()
 	isdead =true
 	state=states.death
 	inaction =true
 	animated_sprite_2d.play("death")
 	set_physics_process(false)
+	get_tree().reload_current_scene()
 	
 		
 	

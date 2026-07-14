@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://y4ssa22jf0v7" path="res://Assets/Goblin/Take Hit.png" id="3_3s2j4"]
 [ext_resource type="Texture2D" uid="uid://dtk8o0bi0ih4a" path="res://Assets/Goblin/Idle.png" id="4_6nebt"]
 [ext_resource type="Texture2D" uid="uid://dqpg2aiqc67uf" path="res://Assets/Goblin/Run.png" id="5_ixvp6"]
+[ext_resource type="AudioStream" uid="uid://dk3v54icb8q8m" path="res://Assets/freesound_community-sword-sound-2-36274.mp3" id="7_3s2j4"]
+[ext_resource type="AudioStream" uid="uid://cplaeo8b4jeh4" path="res://Assets/universfield-dramatic-death-collapse-352720.mp3" id="8_6nebt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mq4fs"]
 atlas = ExtResource("1_eyhpr")
@@ -292,3 +294,9 @@ shape = SubResource("RectangleShape2D_utad2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=105377620]
 position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_3s2j4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=67360663]
+stream = ExtResource("7_3s2j4")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1208613034]
+stream = ExtResource("8_6nebt")
