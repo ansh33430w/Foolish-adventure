@@ -11,7 +11,7 @@ const maxhlt = 50
 var hlt = maxhlt
 var atkdmg = 10
 var atktime = .3
-var atkrange = 30.0
+var atkrange = 30
 var atkcdnmax = 1.0
 var atkcdn = 0.0
 
@@ -99,8 +99,8 @@ func tick_state(delta):
 			if target==null:
 				state =states.patrol
 				return
-			var distance = global_position.distance_to(target.global_position)
-			
+			var distance = abs(global_position.x -  target.global_position.x)
+			print(distance)
 			if distance> loserange :
 				target= null
 				state = states.patrol
@@ -139,6 +139,7 @@ func patrol() :
 	
 	
 func chase():
+	print(velocity.x)
 	var dx = target.global_position.x - global_position.x
 	if abs(dx)>2.0:
 		var dir = sign(dx)

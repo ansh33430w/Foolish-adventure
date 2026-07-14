@@ -231,8 +231,11 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nebt"]
+size = Vector2(18.18045, 27.649023)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyhpr"]
-size = Vector2(25, 38)
+size = Vector2(37, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utad2"]
 size = Vector2(505.5, 33)
@@ -246,45 +249,44 @@ collision_mask = 15
 script = ExtResource("1_utad2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=250963152]
-position = Vector2(73, -36)
+position = Vector2(0, -8)
 scale = Vector2(1, 1.1266667)
 sprite_frames = SubResource("SpriteFrames_3r1id")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1027102069]
-position = Vector2(1, -4)
-scale = Vector2(0.99999994, 1.2465279)
-polygon = PackedVector2Array(59, 0, 64, 0, 71, -8, 74, -10, 78, -9, 79, -6, 78, -5, 76, -3, 78, -1, 82, -1, 82, -3, 82, -6, 86, -8, 85, -12, 81, -15, 89, -13, 87, -18, 82, -21, 85, -31, 83, -33, 80, -30, 77, -32, 76, -34, 74, -31, 65, -36, 69, -28, 64, -24, 59, -21, 55, -19, 59, -13, 62, -7, 58, -2)
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="." unique_id=1561858626]
+position = Vector2(2, 3)
+scale = Vector2(0.9779414, 1.2465279)
+shape = SubResource("RectangleShape2D_6nebt")
 
 [node name="hitbpx" type="Area2D" parent="." unique_id=1086386640]
 position = Vector2(61, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbpx" unique_id=1388107858]
-position = Vector2(40.5, -4)
+position = Vector2(-28.5, 18.5)
 shape = SubResource("RectangleShape2D_eyhpr")
 
 [node name="Detect" type="Area2D" parent="." unique_id=1520236080]
-visible = false
 light_mask = 31
 visibility_layer = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detect" unique_id=1668966096]
-position = Vector2(80, -21)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_utad2")
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=1789791247]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=105377620]
-position = Vector2(72.5, -24.5)
+position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_3s2j4")
 
 [node name="raycastes" type="Node" parent="." unique_id=1143870100]
 
 [node name="checkwall" type="RayCast2D" parent="raycastes" unique_id=844973444]
-position = Vector2(75, -17)
-target_position = Vector2(280, 0)
+position = Vector2(2, -1)
+target_position = Vector2(51, 1)
 
 [node name="checkledge" type="RayCast2D" parent="raycastes" unique_id=2118251763]
-position = Vector2(75, -10)
-target_position = Vector2(280, 0)
+position = Vector2(-1, 19)
+target_position = Vector2(53, 1)

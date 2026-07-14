@@ -447,18 +447,18 @@ collision_mask = 15
 script = ExtResource("1_yi2kj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=407910131]
-position = Vector2(1, 2)
+position = Vector2(2, -28)
+scale = Vector2(0.96875, 1)
 sprite_frames = SubResource("SpriteFrames_yi2kj")
 animation = &"hurt"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1231585994]
-position = Vector2(-0.5, 27.25)
 shape = SubResource("RectangleShape2D_cibgq")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1716835303]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=995801903]
-position = Vector2(24.25, 28)
+position = Vector2(24, -2)
 shape = SubResource("RectangleShape2D_mfdas")
 debug_color = Color(0.88902974, 0.32778934, 0, 0.41960785)
