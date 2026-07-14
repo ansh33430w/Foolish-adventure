@@ -11,7 +11,7 @@ const maxhlt = 50
 var hlt = maxhlt
 var atkdmg = 10
 var atktime = .3
-var atkrange = 40.0
+var atkrange = 30.0
 var atkcdnmax = 1.0
 var atkcdn = 0.0
 
@@ -29,7 +29,8 @@ var patroldir = 1
 
 
 @onready var hurtbox: Area2D = $hurtbox
-@onready var hurtboxshape: Area2D = $hurtbox
+@onready var hurtbox_shape: CollisionShape2D = $hurtbox/CollisionShape2D
+
 
 @onready var detect: Area2D = $Detect
 
@@ -94,7 +95,7 @@ func tick_state(delta):
 		states.atk:
 				velocity.x=0.0
 			
-		states.patrol:
+		states.hunt:
 			if target==null:
 				state =states.patrol
 				return
@@ -105,19 +106,23 @@ func tick_state(delta):
 				state = states.patrol
 				return
 				
-			if distance <= atkrange and atkcdn <= 0.0:
-				pass #----
+			if distance <= atkrange:
+				velocity.x =0.0
+				if atkcdn<=0.0:
+					attack()
+				
+				
 				
 			else:
-				#chase()
+				chase()
 				pass
 				
-		states.patrol ,_ :
+		states.patrol  :
 			if target != null:
 				state = states.hunt
 				return
 				
-			#patrol
+			patrol()
 			
 			
 			
@@ -134,13 +139,17 @@ func patrol() :
 	
 	
 func chase():
-	var dir = sign(target.global_position.x - global_position.x)
-	velocity.x = dir *chasespeed
-	animated_sprite_2d.flip_h = dir < 0
-	
+	var dx = target.global_position.x - global_position.x
+	if abs(dx)>2.0:
+		var dir = sign(dx)
+		velocity.x = dir *chasespeed
+		animated_sprite_2d.flip_h = dir < 0
+	else :
+		velocity.x= 0.0
 	
 	
 func attack():
+	
 	state = states.atk
 	inaction = true
 	velocity.x = 0.0 
@@ -162,7 +171,9 @@ func attack():
 	
 	
 func _on_detect_body_entered(body:Node2D):
+	
 	if body.is_in_group("player"):
+		print("UU")
 		target = body
 		
 		
@@ -180,13 +191,16 @@ func _on_detect_body_exited(body : Node2D):
 func _on_hitbpx_area_enterd(area:Area2D):
 	var atktarget = area.get_parent()
 	if atktarget and atktarget.is_in_group("player") :
-		atktarget.damage(atkdmg)
+		atktarget.Damage(atkdmg)
 		
 		
 		
 		
 func _on_hurtbox_area_entered(area:Area2D):
-	damage(12.5)
+	var attker = area.get_parent()
+	if attker.is_in_group("player"):
+	 
+		damage(12.5)
 	
 	
 
@@ -235,7 +249,7 @@ func _on_aniamtion_finished():
 		inaction = false
 		atkcdn = atkcdnmax
 		state = states.hunt if target != null else states.patrol
-	elif anim == "hurt ":
+	elif anim == "hit":
 		inaction = false
 		state = states.hunt if target!=null else states.patrol
 		

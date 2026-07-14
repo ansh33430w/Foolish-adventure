@@ -235,7 +235,7 @@ animations = [{
 size = Vector2(25, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utad2"]
-size = Vector2(351, 33)
+size = Vector2(505.5, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s2j4"]
 size = Vector2(27, 49)
@@ -249,7 +249,7 @@ script = ExtResource("1_utad2")
 position = Vector2(73, -36)
 scale = Vector2(1, 1.1266667)
 sprite_frames = SubResource("SpriteFrames_3r1id")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1027102069]
@@ -265,17 +265,17 @@ position = Vector2(40.5, -4)
 shape = SubResource("RectangleShape2D_eyhpr")
 
 [node name="Detect" type="Area2D" parent="." unique_id=1520236080]
+visible = false
 light_mask = 31
 visibility_layer = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detect" unique_id=1668966096]
-position = Vector2(76, -22)
+position = Vector2(80, -21)
 shape = SubResource("RectangleShape2D_utad2")
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=1789791247]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=105377620]
-visible = false
 position = Vector2(72.5, -24.5)
 shape = SubResource("RectangleShape2D_3s2j4")
 
