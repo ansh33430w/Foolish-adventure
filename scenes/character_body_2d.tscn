@@ -442,14 +442,15 @@ size = Vector2(21, 75.5)
 size = Vector2(25.5, 68)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2054759602]
+collision_layer = 15
+collision_mask = 15
 script = ExtResource("1_yi2kj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=407910131]
 position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_yi2kj")
-animation = &"fall"
+animation = &"hurt"
 autoplay = "Idle"
-frame_progress = 0.059376422
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1231585994]
 position = Vector2(-0.5, 27.25)
