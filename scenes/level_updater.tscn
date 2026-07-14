@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ci33vimvam10b"]
+
+[ext_resource type="Script" uid="uid://mil6jbnoapnq" path="res://scenes/level_updater.gd" id="1_vd4ve"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfw1m"]
+radius = 51.156624
+
+[node name="level_updater" type="Area2D" unique_id=1196821564]
+script = ExtResource("1_vd4ve")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1132656593]
+shape = SubResource("CircleShape2D_pfw1m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

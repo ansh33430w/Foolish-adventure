@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://tokm8kpoyv20"]
+
+[ext_resource type="Texture2D" uid="uid://cgxq1eu1gq6f1" path="res://Assets/map/2 Background/Overlay_illumination.png" id="1_c2u1v"]
+[ext_resource type="Script" uid="uid://do8ee5pvvkuf5" path="res://scripts/options.gd" id="1_yjkok"]
+
+[node name="options" type="Control" unique_id=937632913]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yjkok")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1762660856]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_c2u1v")
+
+[node name="Label" type="Label" parent="." unique_id=1655010067]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 84.0
+offset_right = 1096.0
+offset_bottom = 342.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "OPTIONS"
+
+[node name="Button" type="Button" parent="." unique_id=764039418]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 560.0
+offset_right = 647.0
+offset_bottom = 620.0
+text = "MAIN MENU
+"
+
+[node name="Button2" type="Button" parent="." unique_id=1420424044]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 188.0
+offset_right = 279.0
+offset_bottom = 256.0
+text = "LEVEL 1"
+
+[node name="Button3" type="Button" parent="." unique_id=432983041]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 188.0
+offset_right = 478.0
+offset_bottom = 259.0
+text = "LEVEL 2"
+
+[node name="Button4" type="Button" parent="." unique_id=292165291]
+layout_mode = 0
+offset_left = 511.0
+offset_top = 190.0
+offset_right = 673.0
+offset_bottom = 257.0
+text = "LEVEL 3 "
+
+[node name="Button5" type="Button" parent="." unique_id=315961347]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button6" type="Button" parent="." unique_id=1896089090]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

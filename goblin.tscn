@@ -238,7 +238,7 @@ size = Vector2(18.18045, 27.649023)
 size = Vector2(114, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utad2"]
-size = Vector2(505.5, 33)
+size = Vector2(295, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s2j4"]
 size = Vector2(27, 49)
@@ -280,12 +280,11 @@ position = Vector2(-1, 19)
 target_position = Vector2(53, 1)
 
 [node name="Detect" type="Area2D" parent="." unique_id=1520236080]
-visible = false
 light_mask = 31
 visibility_layer = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detect" unique_id=1668966096]
-position = Vector2(0, -1)
+position = Vector2(1.5, -1)
 shape = SubResource("RectangleShape2D_utad2")
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=1789791247]
