@@ -36,7 +36,7 @@ HOLD SHIFT WITH A&D ==== LRFT AND RIGHT RUN
 SPACE === JUMP
 
 ## WHERE TO PLAY
-GO TO 
+GO TO https://anshshukla.itch.io/foolish-adventure
 AND ENJOY THE GAME
 
 
